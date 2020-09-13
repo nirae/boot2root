@@ -1105,3 +1105,5 @@ root
 ```
 
 We are root! Script it now
+
+In the script we also creating a root_shell program on the server. Better for have a real root shell
