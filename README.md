@@ -86,9 +86,11 @@ We have to find 2 exploit methods to validate the mandatory part. 1 bonus per ot
     - `646da671ca01bb5d84dbb5fb2238dc8e`
 20. Inspect zaz's home
     - binary file `exploit_me` with root suid
-21. Exploit binary `strcpy` overflow -> **gdb** + ret2libc method
+21. Exploit binary `strcpy` overflow -> **gdb** + ret2libc method -> `zaz/exploit.py`
     - root shell
 22. (Optional) Add a backdoor binary to easily open a `root` shell on a `zaz` ssh session
+
+*From 21 to 22 are automated with the scripts `zaz/exploit.py`*
 
 **ROOT!** :checkered_flag:
 
