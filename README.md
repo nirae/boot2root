@@ -112,7 +112,7 @@ We have to find 2 exploit methods to validate the mandatory part. 1 bonus per ot
 - [x] SUID binaries vuln
     - linux-smart-enumeration
     - manually
-- [x] open port vuln
+- [x] Open port vuln
     - metasploit
 
 ### Some links
