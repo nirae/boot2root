@@ -11,6 +11,8 @@
 
 We have to find 2 exploit methods to validate the mandatory part. 1 bonus per other valid methods
 
+![screen_page](img/screen_full_page.png)
+
 ## Mandatory part
 
 ### 1st solution
