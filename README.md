@@ -61,6 +61,8 @@ We have to find 2 exploit methods to validate the mandatory part. 1 bonus per ot
 8. Inject python reverse shell -> **backdoor** guest + **netcat** host (or scripts `reverse_shell_inject.py` + `listen_reverse_shell.py`)
     - shell on server with user `www-data`
 9. FTP login -> credentials found on `/home/LOOKATME`
+    - `lmezard`
+    - `G!@M6f4Eatau{sF"`
     - files `README` and `fun`
 10. Extract `fun` tar archive -> `tar xvf`
     - many pcap files in the directory `ft_fun`
