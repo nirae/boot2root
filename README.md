@@ -48,7 +48,7 @@ We have to find 2 exploit methods to validate the mandatory part. 1 bonus per ot
 10. Upload custom Dirty COW exploit + compile + run
     - new user `easywin` with password `easywin`, with root rights
 
-*From 8 to 10 are automated with the scripts `reverse_shell_inject.py` + `exploit_dirtycow.py`*
+*From 8 to 10 are automated with the script `dirtycow.py`*
 
 **ROOT!** :checkered_flag:
 
@@ -58,7 +58,7 @@ We have to find 2 exploit methods to validate the mandatory part. 1 bonus per ot
 
 **Starting at the 1st solution point 8**
 
-8. Inject python reverse shell -> **backdoor** guest + **netcat** host (or scripts `reverse_shell_inject.py` + `listen_reverse_shell.py`)
+8. Inject python reverse shell -> **backdoor** guest + **netcat** host (or scripts `reverse_shell.py`)
     - shell on server with user `www-data`
 9. FTP login -> credentials found on `/home/LOOKATME`
     - `lmezard`
@@ -100,24 +100,64 @@ We have to find 2 exploit methods to validate the mandatory part. 1 bonus per ot
 
 ### Bootloader init program overwrite
 
+*[writeup3.md](bonus/writeup3.md)*
+
 1. At the boot, spam `Shift` to access to the grub boot menu
 2. List boot partitions with `Tab`
     - `live`
 3. Enter `live init=/bin/bash`
     - root shell
 
-### Research
+### Extract root bash_history from iso file
 
-- [x] Other kernel vuln
-    - linux-exploit-suggester-2
-    - manually
-- [x] SUID binaries vuln
-    - linux-smart-enumeration
-    - manually
-- [x] Open port vuln
-    - metasploit
+*[writeup4.md](bonus/writeup4.md)*
 
-### Some links
+1. List the iso files -> script `ls_iso.py`
+    - file `filesystem.squashfs` contain the filesystem
+2. Extract the file `/root/.bash_history` from the filesystem -> `extract_file_iso.py`
+    - root `.bash_history`
+3. Get the zaz password -> `read_bash_history.py`
+    - `646da671ca01bb5d84dbb5fb2238dc8e`
+4. zaz ssh
+5. Second solution step 20
+
+### Apache suEXEC vulnerability
+
+*[writeup5.md](bonus/writeup5.md)*
+
+**Starting at the 1st solution point 7**
+
+7. Inject php exec code page in the forum to execute commands -> PhpMyAdmin **SQL request**
+    - `https://192.168.1.22/forum/templates_c/backdoor.php`
+    - a new page `paths.php`
+8. Naviguate in the directory `/home/LOOKATME/password` -> paths.php
+    - FTP credentials
+    - `lmezard`
+    - `G!@M6f4Eatau{sF"`
+
+**Continue at the 2nd solution point 9**
+
+### Dirty c0w spawn shell
+
+*[writeup6.md](bonus/writeup6.md)*
+
+Using another DirtyCow exploit: `c0w.c`
+
+**Starting at the 1st solution point 10**
+
+10. Upload custom Dirty COW exploit + compile + run -> `c0w.py`
+    - `/usr/bin/passwd` is now a backdoor to spawn a shell
+
+
+### Dirty cow + P0wny-Shell
+
+*[writeup7.md](bonus/writeup7.md)*
+
+**Starting at the 1st solution point 8**
+
+
+
+### References
 
 https://github.com/diego-treitos/linux-smart-enumeration
 https://github.com/jondonas/linux-exploit-suggester-2

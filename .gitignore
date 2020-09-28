@@ -9,3 +9,8 @@ shadow
 mypasswd
 packages.txt
 .vscode
+
+filesystem.squashfs
+root_bash_history
+output
+*.iso
