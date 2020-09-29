@@ -46,7 +46,7 @@ We have to find 2 exploit methods to validate the mandatory part. 1 bonus per ot
 9. List kernel version + list popular vulnerabilities
     - Dirty COW (**CVE-2016-5195**)
 10. Upload custom Dirty COW exploit + compile + run
-    - new user `easywin` with password `easywin`, with root rights
+    - `root` user with the new password `easywin`
 
 *From 8 to 10 are automated with the script `dirtycow.py`*
 
@@ -92,7 +92,7 @@ We have to find 2 exploit methods to validate the mandatory part. 1 bonus per ot
     - root shell
 22. (Optional) Add a backdoor binary to easily open a `root` shell on a `zaz` ssh session
 
-*From 21 to 22 are automated with the scripts `zaz/exploit.py`*
+*From 21 to 22 are automated with the script `zaz/exploit.py`*
 
 **ROOT!** :checkered_flag:
 
@@ -119,7 +119,8 @@ We have to find 2 exploit methods to validate the mandatory part. 1 bonus per ot
 3. Get the zaz password -> `read_bash_history.py`
     - `646da671ca01bb5d84dbb5fb2238dc8e`
 4. zaz ssh
-5. Second solution step 20
+
+**Continue at the 2nd solution point 20**
 
 ### Apache suEXEC vulnerability
 
@@ -146,16 +147,26 @@ Using another DirtyCow exploit: `c0w.c`
 **Starting at the 1st solution point 10**
 
 10. Upload custom Dirty COW exploit + compile + run -> `c0w.py`
-    - `/usr/bin/passwd` is now a backdoor to spawn a shell
+    - `/usr/bin/passwd` is now a backdoor to spawn a root shell
 
+*All steps are automated with the script `c0w.py`*
 
-### Dirty cow + P0wny-Shell
+### Dirty cow + P0wny-Shell backdoor
 
 *[writeup7.md](bonus/writeup7.md)*
 
-**Starting at the 1st solution point 8**
+**Starting at the 1st solution point 10**
 
+10. Upload custom Dirty COW exploit + compile + run
+    - `root` user with new password `easywin`
+11. Upload the custom php page `p0wny-shell.php`
+    - php page `shell.php` on the forum with a shell
+12. Create a binary `exec_cmd` in the path with root suid to execute commands
+    - `exec_cmd` backdoor binary
+13. Go to `/forum/templates_c/shell.php`
+    - backdoor page with root shell
 
+*All steps are automated with the script `dirtycow_p0wny.py`*
 
 ### References
 

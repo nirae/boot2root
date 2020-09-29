@@ -16,4 +16,4 @@ We built a script `c0w.py` to get the reverse shell and send the exploit. The sc
 - Run `/usr/bin/passwd`
 - Root shell!
 
-
+:checkered_flag:
