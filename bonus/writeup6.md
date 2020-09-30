@@ -1,4 +1,4 @@
-# Dirty c0w spawn shell
+# Dirty c0w infect
 
 We starting at the part **reverse shell** of the 1st solution
 

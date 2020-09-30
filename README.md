@@ -168,6 +168,16 @@ Using another DirtyCow exploit: `c0w.c`
 
 *All steps are automated with the script `dirtycow_p0wny.py`*
 
+### Zaz exploit alternative
+
+*[writeup8.md](bonus/writeup8.md)*
+
+**Starting at the 2nd solution point 20**
+
+21. Exploit binary `strcpy` overflow -> **gdb** + shellcode method ->
+    - root shell
+22. (Optional) Add a backdoor binary to easily open a `root` shell on a `zaz` ssh session
+
 ### References
 
 https://github.com/diego-treitos/linux-smart-enumeration

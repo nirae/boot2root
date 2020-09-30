@@ -10,7 +10,7 @@ def phase_5(line):
         r += static_string[index]
     return r
 
-print(phase_5('abcde'))
+print(phase_5(abc))
 tab_correspondance = {phase_5(c): c for c in abc}
 print("Tableau de correspondance :", tab_correspondance)
 

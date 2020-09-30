@@ -93,6 +93,7 @@ ftp> ls
 
 There is 2 files in the ftp of lmezard. Download it to read it
 
+```
 ftp> get README
 local: README remote: README
 200 PORT command successful. Consider using PASV.
@@ -106,6 +107,8 @@ local: fun remote: fun
 226 Transfer complete.
 808960 bytes received in 0.02 secs (42.6730 MB/s)
 ftp> 221 Goodbye.
+```
+
 
 ```
 $ cat README 
@@ -552,9 +555,9 @@ if (c != second) {
 }
 ```
 
-For the result, we have many possibilities, let's choose the first.
+For the result, we have many possibilities, let's choose one with a 'b', like the hint
 
-Result: `0 q 777`
+Result: `1 b 214`
 
 ### Phase 4
 
@@ -589,7 +592,7 @@ Result: `0 q 777`
    0x08048d2a <+74>:	ret   
 ```
 
-Get 1 number from the command line. Applyan algorithm to check the number. Translate in C
+Get 1 number from the command line. Apply an algorithm to check the number. Translate in C
 
 ```C
 int func4(int nb) {
@@ -664,7 +667,7 @@ Result: `9`
    0x08048d94 <+104>:	ret    
 ```
 
-Take 1 string from the command line and apply an algorithm to translate the string with a correspondence table (a string "isrveawhobpnutfg") and match it with a string "giants". Translate in C
+Take 1 string from the command line and apply an algorithm to translate the string with a correspondance table (a string "isrveawhobpnutfg") and match it with a string "giants". Translate in C
 
 ```C
 void phase_5(char *line) {
@@ -700,7 +703,7 @@ print(phase_5('abc'))
 
 Print `srvea`
 
-The algorithm replace the alphabet with the correspondence table, starting at index 1 and not 0. Let's write a resolver in python
+The algorithm replace the alphabet with the correspondance table, starting at index 1 and not 0. Let's write a resolver in python
 
 Result: `opukmq`
 
@@ -828,7 +831,7 @@ All the values are:
 
 - `Public speaking is very easy.`
 - `1 2 6 24 120 720`
-- `0 q 777`
+- `1 b 214`
 - `9`
 - `opukmq`
 - `4 2 6 3 1 5`
@@ -841,7 +844,7 @@ Public speaking is very easy.
 Phase 1 defused. How about the next one?
 1 2 6 24 120 720
 That's number 2.  Keep going!
-0 q 777
+1 b 214
 Halfway there!
 9
 So you got that one.  Try this one.
@@ -859,7 +862,7 @@ Ok... There is an error in the subject, need to inverse the last numbers...
 
 `Publicspeakingisveryeasy.126241207200q7779opukmq426135`
 
-Doesn't work... Let's try with other combinaisons for the phase_3 part, there are 8 possibilities
+Doesn't work... Let's try with other combinaisons for the phase_3 part, there are 3 possibilities
 
 The good one was `1 b 214`
 
@@ -883,17 +886,19 @@ Let's write a python script to parse the file et draw the instructions.
 
 We can see the word `SLASH` appears. The password doesn't work for the user `zaz`
 
-The password is the md5sum of the word `SLASH`
+The password is the md5sum of the word `SLASH`, as we can guess with the hint at the end of the turtle file `Can you digest the message? :)`
 
 `646da671ca01bb5d84dbb5fb2238dc8e`
 
 ## Zaz
 
-There is a binary file `exploit_me` and a directory `mail`
+There is a binary file `exploit_me` with suid/sgid and a directory `mail`
 
 ```
-$ ls
-exploit_me  mail
+$ ls -l
+total 5
+-rwsr-s--- 1 root zaz 4880 Oct  8  2015 exploit_me
+drwxr-x--- 3 zaz  zaz  107 Oct  8  2015 mail
 
 $ ls -la mail
 total 1
