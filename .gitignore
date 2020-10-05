@@ -1,5 +1,6 @@
 .vagrant
 boot2root.*
+Vagrantfile
 peda*
 exploit_me
 turtle
